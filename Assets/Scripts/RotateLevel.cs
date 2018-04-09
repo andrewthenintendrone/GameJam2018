@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateLevel : MonoBehaviour
 {
+    public bool canRotate = true;
     public bool rotating = false;
 
     public float degreesToRotate = 90.0f;
@@ -20,23 +21,6 @@ public class RotateLevel : MonoBehaviour
 
     void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.Space) && !rotating)
-        {
-            rotating = true;
-
-            // freeze level objects
-            foreach(GameObject currentObject in levelObjects)
-            {
-                if(currentObject.GetComponent<Rigidbody2D>() != null)
-                {
-                    currentObject.GetComponent<Rigidbody2D>().simulated = false;
-                }
-                currentObject.transform.parent = transform;
-            }
-            player.GetComponent<Rigidbody2D>().simulated = false;
-            player.transform.parent = transform;
-        }
-
         if(rotating)
         {
             currentAngle += degreesToRotate * Time.deltaTime;
@@ -64,6 +48,10 @@ public class RotateLevel : MonoBehaviour
                 }
                 player.GetComponent<Rigidbody2D>().simulated = true;
                 player.transform.parent = null;
+
+                // disable this script for a while to prevent repeating
+                canRotate = false;
+                Invoke("enableRotation", 1.0f);
             }
 
             if(rotating)
@@ -73,4 +61,30 @@ public class RotateLevel : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, currentAngle);
         }
 	}
+
+    // attempts to rotate the level
+    public void Rotate()
+    {
+        if(canRotate)
+        {
+            rotating = true;
+
+            // freeze level objects
+            foreach (GameObject currentObject in levelObjects)
+            {
+                if (currentObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                }
+                currentObject.transform.parent = transform;
+            }
+            player.GetComponent<Rigidbody2D>().simulated = false;
+            player.transform.parent = transform;
+        }
+    }
+
+    void enableRotation()
+    {
+        canRotate = true;
+    }
 }
