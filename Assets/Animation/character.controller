@@ -8,20 +8,8 @@ AnimatorController:
   m_Name: character
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: walking
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: jumping
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: pushing
-    m_Type: 4
+  - m_Name: playerState
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -46,15 +34,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: walking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: jumping
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: pushing
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: playerState
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102699899579401900}
   m_Solo: 0
@@ -76,15 +58,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: walking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: pushing
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: jumping
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: playerState
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102980196214590938}
   m_Solo: 0
@@ -106,14 +82,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: walking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: jumping
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: pushing
+  - m_ConditionMode: 6
+    m_ConditionEvent: playerState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102003192393595250}
@@ -136,9 +106,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: jumping
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: playerState
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102634494500677998}
   m_Solo: 0

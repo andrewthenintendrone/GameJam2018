@@ -54,6 +54,7 @@ public class RotateLevel : MonoBehaviour
                 {
                     currentObject.GetComponent<Rigidbody2D>().simulated = true;
                     currentObject.transform.parent = null;
+                    currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
                 }
                 player.GetComponent<Rigidbody2D>().simulated = true;
                 player.transform.parent = null;
