@@ -120,4 +120,9 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.collider.attachedRigidbody.AddForce(new Vector2(movement.x, 0));
+    }
 }
