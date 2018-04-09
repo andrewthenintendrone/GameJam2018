@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Sprite))]
+[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -27,6 +27,15 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
+        if(horizontal < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (horizontal > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
 
         rb.AddForce(new Vector2(horizontal * playerSettings.moveSpeed * Time.deltaTime, 0), ForceMode2D.Force);
 	}
