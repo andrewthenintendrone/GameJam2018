@@ -27,7 +27,10 @@ public class RotateLevel : MonoBehaviour
             // freeze level objects
             foreach(GameObject currentObject in levelObjects)
             {
-                currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                if(currentObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                }
                 currentObject.transform.parent = transform;
             }
             player.GetComponent<Rigidbody2D>().simulated = false;
@@ -52,9 +55,12 @@ public class RotateLevel : MonoBehaviour
                 // unfreeze level objects
                 foreach (GameObject currentObject in levelObjects)
                 {
-                    currentObject.GetComponent<Rigidbody2D>().simulated = true;
-                    currentObject.transform.parent = null;
-                    currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
+                    if(currentObject.GetComponent<Rigidbody2D>() != null)
+                    {
+                        currentObject.GetComponent<Rigidbody2D>().simulated = true;
+                        currentObject.transform.parent = null;
+                        currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
+                    }
                 }
                 player.GetComponent<Rigidbody2D>().simulated = true;
                 player.transform.parent = null;
