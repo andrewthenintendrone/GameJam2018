@@ -647,6 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561580043}
   - component: {fileID: 1561580042}
+  - component: {fileID: 1561580040}
   m_Layer: 0
   m_Name: level
   m_TagString: Untagged
@@ -654,6 +655,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1561580040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561580039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c2b8cd9480e1a4d9942c00197557b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotating: 0
+  degreesToRotate: 90
+  lastAngle: 0
+  currentAngle: 0
 --- !u!212 &1561580042
 SpriteRenderer:
   m_ObjectHideFlags: 0
