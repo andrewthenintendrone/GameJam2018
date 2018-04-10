@@ -8,7 +8,7 @@ public class RotateLevel : MonoBehaviour
     public bool canRotate = true;
     public bool rotating = false;
 
-    public float degreesToRotate = -90.0f;
+    public float degreesToRotate = 90.0f;
     public float lastAngle = 0.0f;
     public float currentAngle = 0.0f;
 
