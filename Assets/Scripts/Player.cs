@@ -82,6 +82,10 @@ public class Player : MonoBehaviour
 
         hitInfo = Physics2D.BoxCast(transform.position - Vector3.up * myCollider.bounds.extents.y, new Vector2(myCollider.bounds.size.x, 0.1f), 0, Vector2.zero);
         jumping = hitInfo.collider == null;
+        if(hitInfo.collider != null)
+        {
+            jumping = hitInfo.collider.isTrigger;
+        }
 
         // check if the player is pushing a block
         hitInfo = Physics2D.Raycast(transform.position, Vector2.right * Mathf.Sign(movement.x), 0.25f);
@@ -121,11 +125,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Rotate")
         {
-            GameObject.FindObjectOfType<RotateLevel>().Rotate();
+            if(collision.gameObject.GetComponent<SpriteRenderer>() != null)
+            {
+                bool clockwise = collision.gameObject.GetComponent<SpriteRenderer>().flipX;
+                GameObject.FindObjectOfType<RotateLevel>().Rotate(clockwise);
+            }
         }
     }
 }
