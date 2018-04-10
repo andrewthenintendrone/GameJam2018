@@ -12,9 +12,9 @@ public class BackgroundScroll : MonoBehaviour
     {
         transform.Translate(Vector3.right * scrollSpeedX * Time.deltaTime);
 
-        if(transform.position.x <= loopPositionX)
+        if(transform.localPosition.x <= loopPositionX)
         {
-            transform.position = Vector3.right * startPositionX;
+            transform.localPosition = Vector3.right * startPositionX;
         }
 	}
 }

@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 	
-	void Update ()
+	void FixedUpdate ()
     {
         move();
         checkState();
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
         // update movement
         movement = Vector2.zero;
-        movement.x = horizontal * playerSettings.moveSpeed * Time.deltaTime;
+        movement.x = horizontal * playerSettings.moveSpeed * Time.fixedDeltaTime;
 
         if(!jumping && vertical > 0)
         {
