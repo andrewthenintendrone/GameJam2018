@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class Button : MonoBehaviour {
 
-    public GameObject door;
-	// Use this for initialization
+    public GameObject door;	
 	void Start ()
     {
+        //default the door to not play
         door.GetComponent<Animator>().StopPlayback();
 	}
 
-    private void Update()
-    {
-        
-    }
-    // Update is called once per frame
+   //When an object hits the button open the door
     private void OnTriggerEnter2D(Collider2D collision)
     {
      
         if (collision.GetComponent<Rigidbody2D>() != null)
-        {
-
-
-            if (collision.GetComponent<Rigidbody2D>().mass >= 3)
-            {
-               // transform.localScale -= new Vector3(0, 0.1f, 0) * Time.deltaTime;
-                // transform.position -= new Vector3(0, 0.1f, 0) * Time.deltaTime;
-                door.GetComponent<Animator>().SetBool("isOpen",true);
-
-                //Debug.Log(door.GetComponent<Animator>().speed);
-            }
+        {          
+                door.GetComponent<Animator>().SetBool("isOpen",true);           
         }
     }
+
+    //when there is no longer an object on the button close the door
     private void OnTriggerExit2D(Collider2D collision)
     {
         door.GetComponent<Animator>().SetBool("isOpen", false);
