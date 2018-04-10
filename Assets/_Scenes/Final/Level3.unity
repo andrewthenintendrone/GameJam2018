@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 59954311}
   - component: {fileID: 59954310}
   - component: {fileID: 59954302}
+  - component: {fileID: 59954303}
   m_Layer: 0
   m_Name: level_4
   m_TagString: Untagged
@@ -208,6 +209,18 @@ MonoBehaviour:
   - {fileID: 435730454}
   - {fileID: 67238328}
   - {fileID: 1156558151}
+--- !u!114 &59954303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59954301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cd9e12ea2df994cb38704300006f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerDead: 0
 --- !u!212 &59954310
 SpriteRenderer:
   m_ObjectHideFlags: 0
