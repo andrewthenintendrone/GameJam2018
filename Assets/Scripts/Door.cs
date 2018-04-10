@@ -15,7 +15,7 @@ public class Door : MonoBehaviour {
     // Update is called once per frame
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         
         if (GetComponent<Animator>().GetBool("isOpen"))

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerSettings
@@ -134,6 +135,10 @@ public class Player : MonoBehaviour
                 bool clockwise = collision.gameObject.GetComponent<SpriteRenderer>().flipX;
                 GameObject.FindObjectOfType<RotateLevel>().Rotate(clockwise);
             }
+        }
+        else if(collision.tag == "Lava")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

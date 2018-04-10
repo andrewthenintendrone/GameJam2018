@@ -24,7 +24,7 @@ public class RotateLevel : MonoBehaviour
     {
         if(rotating)
         {
-            currentAngle += degreesToRotate * Time.deltaTime * (clockwise ? 1 : -1);
+            currentAngle += degreesToRotate * Time.deltaTime * (clockwise ? 1 : -1) * 2.0f;
 
             if (clockwise && currentAngle >= (lastAngle + degreesToRotate))
             {
@@ -107,6 +107,6 @@ public class RotateLevel : MonoBehaviour
 
         // disable this script for a while to prevent repeating
         canRotate = false;
-        Invoke("enableRotation", 1.0f);
+        Invoke("enableRotation", 0.85f);
     }
 }
