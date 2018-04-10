@@ -48,6 +48,9 @@ TagManager:
   - name: background2
     uniqueID: 3247838327
     locked: 0
+  - name: background3
+    uniqueID: 2171858127
+    locked: 0
   - name: level
     uniqueID: 867380447
     locked: 0
