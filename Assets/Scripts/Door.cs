@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour {
-    
+
+   static private int levels = 0;
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+      
+      
+
+    }
 
     // Update is called once per frame
 
@@ -21,14 +24,9 @@ public class Door : MonoBehaviour {
         {
             if (collision.tag == "Player")
             {
-                if (SceneManager.GetActiveScene().buildIndex + 1 > SceneManager.sceneCount)
-                {
-                    Application.Quit();
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+            
+               SceneManager.LoadScene(++levels);
+                                                                     
             }
             
         } 
