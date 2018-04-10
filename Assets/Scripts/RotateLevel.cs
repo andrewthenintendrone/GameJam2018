@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RotateLevel : MonoBehaviour
 {
+    bool clockwise;
     public bool canRotate = true;
     public bool rotating = false;
 
-    public float degreesToRotate = 90.0f;
+    public float degreesToRotate = -90.0f;
     public float lastAngle = 0.0f;
     public float currentAngle = 0.0f;
 
@@ -23,38 +24,34 @@ public class RotateLevel : MonoBehaviour
     {
         if(rotating)
         {
-            currentAngle += degreesToRotate * Time.deltaTime;
+            currentAngle += degreesToRotate * Time.deltaTime * (clockwise ? 1 : -1);
 
-            if(currentAngle >= (lastAngle + degreesToRotate))
+            if (clockwise && currentAngle >= (lastAngle + degreesToRotate))
             {
                 currentAngle = lastAngle + degreesToRotate;
-                rotating = false;
                 lastAngle += degreesToRotate;
-                if(lastAngle == 270)
+                if (lastAngle == 270)
                 {
                     currentAngle = -90;
                     lastAngle = -90;
                 }
 
-                // unfreeze level objects
-                foreach (GameObject currentObject in levelObjects)
+                endRotation();
+            }
+            else if (!clockwise && currentAngle <= (lastAngle - degreesToRotate))
+            {
+                currentAngle = lastAngle - degreesToRotate;
+                lastAngle -= degreesToRotate;
+                if (lastAngle == -270)
                 {
-                    if(currentObject.GetComponent<Rigidbody2D>() != null)
-                    {
-                        currentObject.GetComponent<Rigidbody2D>().simulated = true;
-                        currentObject.transform.parent = null;
-                        currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
-                    }
+                    currentAngle = 90;
+                    lastAngle = 90;
                 }
-                player.GetComponent<Rigidbody2D>().simulated = true;
-                player.transform.parent = null;
 
-                // disable this script for a while to prevent repeating
-                canRotate = false;
-                Invoke("enableRotation", 1.0f);
+                endRotation();
             }
 
-            if(rotating)
+            if (rotating)
             {
                 player.transform.localEulerAngles = new Vector3(0, 0, -currentAngle);
             }
@@ -63,10 +60,11 @@ public class RotateLevel : MonoBehaviour
 	}
 
     // attempts to rotate the level
-    public void Rotate()
+    public void Rotate(bool clockWise)
     {
-        if(canRotate)
+        if (canRotate)
         {
+            clockwise = clockWise;
             rotating = true;
 
             // freeze level objects
@@ -74,7 +72,8 @@ public class RotateLevel : MonoBehaviour
             {
                 if (currentObject.GetComponent<Rigidbody2D>() != null)
                 {
-                    currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                    //currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                    currentObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                 }
                 currentObject.transform.parent = transform;
             }
@@ -86,5 +85,28 @@ public class RotateLevel : MonoBehaviour
     void enableRotation()
     {
         canRotate = true;
+    }
+
+    void endRotation()
+    {
+        rotating = false;
+
+        // unfreeze level objects
+        foreach (GameObject currentObject in levelObjects)
+        {
+            if (currentObject.GetComponent<Rigidbody2D>() != null)
+            {
+                //currentObject.GetComponent<Rigidbody2D>().simulated = true;
+                currentObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                currentObject.transform.parent = null;
+                currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
+            }
+        }
+        player.GetComponent<Rigidbody2D>().simulated = true;
+        player.transform.parent = null;
+
+        // disable this script for a while to prevent repeating
+        canRotate = false;
+        Invoke("enableRotation", 1.0f);
     }
 }
