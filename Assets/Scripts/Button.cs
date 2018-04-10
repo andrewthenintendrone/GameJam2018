@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour {
-
+public class Button : MonoBehaviour {    
     public GameObject door;	
 	void Start ()
     {
+        
         //default the door to not play
         door.GetComponent<Animator>().StopPlayback();
 	}
