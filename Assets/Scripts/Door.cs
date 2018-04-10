@@ -24,9 +24,11 @@ public class Door : MonoBehaviour {
         {
             if (collision.tag == "Player")
             {
-            
-               SceneManager.LoadScene(++levels);
-                                                                     
+                if(levels > SceneManager.sceneCountInBuildSettings)
+                {
+                    Application.Quit();
+                }
+               SceneManager.LoadScene(++levels);                              
             }
             
         } 
