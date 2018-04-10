@@ -19,9 +19,16 @@ public class Door : MonoBehaviour {
         
         if (GetComponent<Animator>().GetBool("isOpen"))
         {
-            if (collision.tag == "Player" )
+            if (collision.tag == "Player")
             {
-                SceneManager.LoadScene(1);
+                if (SceneManager.GetActiveScene().buildIndex + 1 > SceneManager.sceneCount)
+                {
+                    Application.Quit();
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             
         } 
