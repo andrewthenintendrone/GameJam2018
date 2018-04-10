@@ -44,20 +44,8 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: background
-    uniqueID: 740848067
-    locked: 0
-  - name: background2
-    uniqueID: 3349529619
-    locked: 0
-  - name: background3
-    uniqueID: 2171858127
-    locked: 0
-  - name: level
-    uniqueID: 2011656373
-    locked: 0
-  - name: sprites
-    uniqueID: 3433987211
+    uniqueID: 2507157599
     locked: 0
   - name: foreground
-    uniqueID: 1558743247
+    uniqueID: 532402789
     locked: 0

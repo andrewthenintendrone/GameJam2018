@@ -3,18 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour {
-
-   static private int levels = 0;
-	// Use this for initialization
-	void Start ()
-    {
-
-    }
-
-    // Update is called once per frame
-
-
+public class Door : MonoBehaviour
+{
     private void OnTriggerStay2D(Collider2D collision)
     {
         
@@ -22,11 +12,11 @@ public class Door : MonoBehaviour {
         {
             if (collision.tag == "Player")
             {
-                if(levels >= SceneManager.sceneCountInBuildSettings)
+                if(SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
                 {
                     Application.Quit();
                 }
-               SceneManager.LoadScene(++levels);                              
+               SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                              
             }
             
         } 
