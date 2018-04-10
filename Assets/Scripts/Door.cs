@@ -9,8 +9,6 @@ public class Door : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-      
-      
 
     }
 
@@ -24,7 +22,7 @@ public class Door : MonoBehaviour {
         {
             if (collision.tag == "Player")
             {
-                if(levels > SceneManager.sceneCountInBuildSettings)
+                if(levels >= SceneManager.sceneCountInBuildSettings)
                 {
                     Application.Quit();
                 }
