@@ -24,84 +24,38 @@ public class RotateLevel : MonoBehaviour
     {
         if(rotating)
         {
-            if(clockwise)
+            currentAngle += degreesToRotate * Time.deltaTime * (clockwise ? 1 : -1);
+
+            if (clockwise && currentAngle >= (lastAngle + degreesToRotate))
             {
-                currentAngle += degreesToRotate * Time.deltaTime;
-
-                if (currentAngle >= (lastAngle + degreesToRotate))
+                currentAngle = lastAngle + degreesToRotate;
+                lastAngle += degreesToRotate;
+                if (lastAngle == 270)
                 {
-                    currentAngle = lastAngle + degreesToRotate;
-                    rotating = false;
-                    lastAngle += degreesToRotate;
-                    if (lastAngle == 270)
-                    {
-                        currentAngle = -90;
-                        lastAngle = -90;
-                    }
-
-                    // unfreeze level objects
-                    foreach (GameObject currentObject in levelObjects)
-                    {
-                        if (currentObject.GetComponent<Rigidbody2D>() != null)
-                        {
-                            currentObject.GetComponent<Rigidbody2D>().simulated = true;
-                            currentObject.transform.parent = null;
-                            currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
-                        }
-                    }
-                    player.GetComponent<Rigidbody2D>().simulated = true;
-                    player.transform.parent = null;
-
-                    // disable this script for a while to prevent repeating
-                    canRotate = false;
-                    Invoke("enableRotation", 1.0f);
+                    currentAngle = -90;
+                    lastAngle = -90;
                 }
 
-                if (rotating)
-                {
-                    player.transform.localEulerAngles = new Vector3(0, 0, -currentAngle);
-                }
-                transform.eulerAngles = new Vector3(0, 0, currentAngle);
+                endRotation();
             }
-            else
+            else if (!clockwise && currentAngle <= (lastAngle - degreesToRotate))
             {
-                currentAngle -= degreesToRotate * Time.deltaTime;
-
-                if (currentAngle <= (lastAngle - degreesToRotate))
+                currentAngle = lastAngle - degreesToRotate;
+                lastAngle -= degreesToRotate;
+                if (lastAngle == -270)
                 {
-                    currentAngle = lastAngle - degreesToRotate;
-                    rotating = false;
-                    lastAngle -= degreesToRotate;
-                    if (lastAngle == -270)
-                    {
-                        currentAngle = 90;
-                        lastAngle = 90;
-                    }
-
-                    // unfreeze level objects
-                    foreach (GameObject currentObject in levelObjects)
-                    {
-                        if (currentObject.GetComponent<Rigidbody2D>() != null)
-                        {
-                            currentObject.GetComponent<Rigidbody2D>().simulated = true;
-                            currentObject.transform.parent = null;
-                            currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
-                        }
-                    }
-                    player.GetComponent<Rigidbody2D>().simulated = true;
-                    player.transform.parent = null;
-
-                    // disable this script for a while to prevent repeating
-                    canRotate = false;
-                    Invoke("enableRotation", 1.0f);
+                    currentAngle = 90;
+                    lastAngle = 90;
                 }
 
-                if (rotating)
-                {
-                    player.transform.localEulerAngles = new Vector3(0, 0, -currentAngle);
-                }
-                transform.eulerAngles = new Vector3(0, 0, currentAngle);
+                endRotation();
             }
+
+            if (rotating)
+            {
+                player.transform.localEulerAngles = new Vector3(0, 0, -currentAngle);
+            }
+            transform.eulerAngles = new Vector3(0, 0, currentAngle);
         }
 	}
 
@@ -118,7 +72,8 @@ public class RotateLevel : MonoBehaviour
             {
                 if (currentObject.GetComponent<Rigidbody2D>() != null)
                 {
-                    currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                    //currentObject.GetComponent<Rigidbody2D>().simulated = false;
+                    currentObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                 }
                 currentObject.transform.parent = transform;
             }
@@ -130,5 +85,28 @@ public class RotateLevel : MonoBehaviour
     void enableRotation()
     {
         canRotate = true;
+    }
+
+    void endRotation()
+    {
+        rotating = false;
+
+        // unfreeze level objects
+        foreach (GameObject currentObject in levelObjects)
+        {
+            if (currentObject.GetComponent<Rigidbody2D>() != null)
+            {
+                //currentObject.GetComponent<Rigidbody2D>().simulated = true;
+                currentObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                currentObject.transform.parent = null;
+                currentObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
+            }
+        }
+        player.GetComponent<Rigidbody2D>().simulated = true;
+        player.transform.parent = null;
+
+        // disable this script for a while to prevent repeating
+        canRotate = false;
+        Invoke("enableRotation", 1.0f);
     }
 }
