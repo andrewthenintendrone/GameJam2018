@@ -402,6 +402,11 @@ Prefab:
       propertyPath: m_Name
       value: Crate_Small
       objectReference: {fileID: 0}
+    - target: {fileID: 50227454349750582, guid: 027eb99198399d64685d06aacf14855c,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 027eb99198399d64685d06aacf14855c, type: 2}
   m_IsPrefabParent: 0
@@ -1120,6 +1125,11 @@ Prefab:
     - target: {fileID: 1297400977359220, guid: 081e2fa40dd26014fa135b7e6ac229fa, type: 2}
       propertyPath: m_Name
       value: Crate_Big
+      objectReference: {fileID: 0}
+    - target: {fileID: 50010733789177260, guid: 081e2fa40dd26014fa135b7e6ac229fa,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 081e2fa40dd26014fa135b7e6ac229fa, type: 2}
