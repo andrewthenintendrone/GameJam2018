@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Rotate
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -43,17 +42,17 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: background
-    uniqueID: 1925737753
+    uniqueID: 740848067
     locked: 0
   - name: background2
-    uniqueID: 3247838327
+    uniqueID: 3349529619
     locked: 0
   - name: level
-    uniqueID: 867380447
+    uniqueID: 2011656373
     locked: 0
   - name: sprites
-    uniqueID: 3133827043
+    uniqueID: 3433987211
     locked: 0
   - name: foreground
-    uniqueID: 3991115685
+    uniqueID: 1558743247
     locked: 0
