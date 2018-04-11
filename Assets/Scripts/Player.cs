@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Rotate")
+        if(collision.tag == "RotateButton")
         {
             if(collision.gameObject.GetComponent<SpriteRenderer>() != null)
             {

@@ -168,11 +168,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac4812544d0aac4998bc75034ae301c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &23190916 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1889650290329354, guid: 6ac4812544d0aac4998bc75034ae301c,
-    type: 2}
-  m_PrefabInternal: {fileID: 23190915}
 --- !u!4 &23190917 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4188136361041020, guid: 6ac4812544d0aac4998bc75034ae301c,
@@ -283,11 +278,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5303bfbbb50ed72429b95f315fc664a8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &172612557 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1643943598075176, guid: 5303bfbbb50ed72429b95f315fc664a8,
-    type: 2}
-  m_PrefabInternal: {fileID: 172612556}
 --- !u!4 &172612558 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4178092539622472, guid: 5303bfbbb50ed72429b95f315fc664a8,
@@ -544,11 +534,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac4812544d0aac4998bc75034ae301c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &337964230 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1889650290329354, guid: 6ac4812544d0aac4998bc75034ae301c,
-    type: 2}
-  m_PrefabInternal: {fileID: 337964229}
 --- !u!4 &337964231 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4188136361041020, guid: 6ac4812544d0aac4998bc75034ae301c,
@@ -642,12 +627,7 @@ MonoBehaviour:
   degreesToRotate: 90
   lastAngle: 0
   currentAngle: 0
-  levelObjects:
-  - {fileID: 1124562498}
-  - {fileID: 172612557}
-  - {fileID: 23190916}
-  - {fileID: 337964230}
-  - {fileID: 1229922851}
+  levelObjects: []
 --- !u!114 &881650249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,11 +751,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 081e2fa40dd26014fa135b7e6ac229fa, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1124562498 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1297400977359220, guid: 081e2fa40dd26014fa135b7e6ac229fa,
-    type: 2}
-  m_PrefabInternal: {fileID: 1124562497}
 --- !u!4 &1124562499 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4026069535461434, guid: 081e2fa40dd26014fa135b7e6ac229fa,

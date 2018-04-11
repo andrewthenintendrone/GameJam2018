@@ -12,12 +12,13 @@ public class RotateLevel : MonoBehaviour
     public float lastAngle = 0.0f;
     public float currentAngle = 0.0f;
 
-    public List<GameObject> levelObjects;
+    public List<GameObject> levelObjects = new List<GameObject>();
     private GameObject player;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        findLevelObjects();
     }
 
     void Update ()
@@ -108,5 +109,24 @@ public class RotateLevel : MonoBehaviour
         // disable this script for a while to prevent repeating
         canRotate = false;
         Invoke("enableRotation", 0.85f);
+    }
+
+    // stores all the objects in the level
+    void findLevelObjects()
+    {
+        foreach (GameObject currentObject in GameObject.FindObjectsOfType<GameObject>())
+        {
+            string currentTag = currentObject.tag;
+
+            if (currentTag == "Player")
+            {
+                player = currentObject;
+            }
+            // don't include the UI layer
+            else if(currentTag != "MainCamera" && currentObject.layer != 5)
+            {
+                levelObjects.Add(currentObject);
+            }
+        }
     }
 }
