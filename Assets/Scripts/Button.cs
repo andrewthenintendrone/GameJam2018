@@ -5,14 +5,21 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {    
     public GameObject door;
-    public List<GameObject> otherButtons;
+    private List<Button> otherButtons = new List<Button>();
     private bool pressed = false;
 
 
 	void Start ()
     {
-        //default the door to not play
-        door.GetComponent<Animator>().StopPlayback();
+        // find other buttons
+        foreach(Button currentButton in GameObject.FindObjectsOfType<Button>())
+        {
+            // ignore self
+            if(currentButton != this)
+            {
+                otherButtons.Add(currentButton);
+            }
+        }
 	}
 
    //When an object hits the button open the door
@@ -24,9 +31,9 @@ public class Button : MonoBehaviour
         }
 
         bool allPreseed = true;
-        foreach(GameObject currentButton in otherButtons)
+        foreach(Button currentButton in otherButtons)
         {
-            if(!currentButton.GetComponent<Button>().pressed)
+            if(!currentButton.pressed)
             {
                 allPreseed = false;
             }

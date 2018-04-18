@@ -7,7 +7,6 @@ public class Door : MonoBehaviour
 {
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
         if (GetComponent<Animator>().GetBool("isOpen"))
         {
             if (collision.tag == "Player")
