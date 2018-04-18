@@ -11,11 +11,7 @@ public class Door : MonoBehaviour
         {
             if (collision.tag == "Player")
             {
-                if(SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
-                {
-                    Application.Quit();
-                }
-               SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                              
+                StartCoroutine(GameObject.FindObjectOfType<SceneFade>().FadeAndLoadNextScene(SceneFade.FadeDirection.In));
             }
         } 
     }
