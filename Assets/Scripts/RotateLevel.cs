@@ -12,7 +12,7 @@ public class RotateLevel : MonoBehaviour
     public float lastAngle = 0.0f;
     public float currentAngle = 0.0f;
 
-    public List<GameObject> levelObjects = new List<GameObject>();
+    private List<GameObject> levelObjects = new List<GameObject>();
     private GameObject player;
 
     private void Start()
@@ -122,7 +122,7 @@ public class RotateLevel : MonoBehaviour
             {
                 player = currentObject;
             }
-            // don't include the UI layer
+            // don't include the UI layer or static level colliders
             else if(currentTag != "MainCamera" && currentObject.layer != 5)
             {
                 levelObjects.Add(currentObject);

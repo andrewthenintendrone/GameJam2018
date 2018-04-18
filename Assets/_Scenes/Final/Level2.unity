@@ -627,7 +627,6 @@ MonoBehaviour:
   degreesToRotate: 90
   lastAngle: 0
   currentAngle: 0
-  levelObjects: []
 --- !u!114 &881650249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,6 +1049,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4572123707343166, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755526794426428, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996719426157580, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346609863922688, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530815867789100, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249702014051236, guid: d01978237d4201544bf351f00e52b0cb, type: 2}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
