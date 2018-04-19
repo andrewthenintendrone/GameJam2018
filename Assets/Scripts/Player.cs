@@ -60,13 +60,13 @@ public class Player : MonoBehaviour
     {
         // get inputs
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float jumpAxis = Input.GetAxisRaw("Jump");
 
         // update movement
         movement = Vector2.zero;
         movement.x = horizontal * playerSettings.moveSpeed * Time.fixedDeltaTime;
 
-        if(!jumping && vertical > 0)
+        if(!jumping && jumpAxis > 0)
         {
             movement.y = playerSettings.jumpForce;
         }

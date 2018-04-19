@@ -10,19 +10,17 @@ public class reset : MonoBehaviour
 {
     [HideInInspector]
     public bool isPlayerDead;
-
     
 	// Use this for initialization
 	void Start ()
     {
-        
         isPlayerDead = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.R) || isPlayerDead )
+        if (Input.GetAxisRaw("Reset") > 0 || isPlayerDead )
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);            
         }
